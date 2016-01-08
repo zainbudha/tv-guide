@@ -7,7 +7,4 @@ function($scope, schedule) {
     var guide = this;
 
     guide.schedule = schedule;
-    console.log("Schedule : " + guide.schedule)
-
-    console.log("Name : " + guide.schedule[0].name)
 }]);
