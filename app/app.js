@@ -7,5 +7,5 @@ angular.module('tvGuide', [
 ])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/guide'});
+  $routeProvider.otherwise({redirectTo: '/today'});
 }])

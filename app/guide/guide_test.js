@@ -6,12 +6,12 @@ describe('tvGuide.guide module', function() {
 
   describe('guide controller', function(){
 
-  	var $scope, todaySchedule, guideCtrl;
+  	var $scope, channels, guideCtrl;
 
     beforeEach(inject(function($controller) {
       $scope = {};
-      todaySchedule = {};
-      guideCtrl = $controller('GuideController', {$scope : $scope, todaySchedule:todaySchedule});
+      channels = {};
+      guideCtrl = $controller('GuideController', {$scope : $scope, channels:channels});
     }));
   	
     it('should be defined', function() {
@@ -19,7 +19,7 @@ describe('tvGuide.guide module', function() {
     });
 
 	it('schedue should be defined', function() {
-      expect(todaySchedule).toBeDefined();
+      expect(channels).toBeDefined();
     });
   });
 });

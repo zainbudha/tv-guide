@@ -1,14 +1,17 @@
+
+<a href="#/today">Today</a> <a href="#/tomorrow">Tomorrow</a>
+
 <table>
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Time</th>
+            <th>Channel Name</th>
+            <th>Event Name</th>
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="event in guideCtrl.schedule">
-            <td>{{event.name}}</td>
-            <td>{{event.airtime}}</td>
+        <tr ng-repeat="channel in guideCtrl.channels">
+            <td>{{channel.channelName}}</td>
+            <td ng-repeat="event in channel.events">{{event.name}}</td>
         </tr>
     </tbody>
 </table>
