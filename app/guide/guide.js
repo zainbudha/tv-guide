@@ -8,16 +8,16 @@ angular.module('tvGuide.guide', ['ngRoute', 'tvGuide.comm'])
       controller: 'GuideController',
       controllerAs: 'guideCtrl',
       resolve: {
-            schedule: function(req) {
+            todaySchedule: function(req) {
               return req.getDaySchedule();
             }
           }
     });
 }])
 
-.controller('GuideController',['$scope', 'schedule',
-function($scope, schedule) {
+.controller('GuideController',['$scope', 'todaySchedule',
+function($scope, todaySchedule) {
     var guide = this;
 
-    guide.schedule = schedule;
+    guide.schedule = todaySchedule;
 }]);

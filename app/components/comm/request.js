@@ -1,6 +1,6 @@
-angular.module("tvGuide.comm", [])
-  .factory("req",['$http',
-    function($http) {
+angular.module("tvGuide.comm", ['tvGuide.schedule'])
+  .factory("req",['$http','schedule',
+    function($http, schedule) {
 
       var getDaySchedule = function getSchedule(date) {
           var url;
@@ -12,7 +12,7 @@ angular.module("tvGuide.comm", [])
           }
         return $http.get(url)
           .then(function(response) {
-            return response.data;
+            return schedule.process(response.data);
           });
       }
       
