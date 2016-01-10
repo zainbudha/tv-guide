@@ -8,8 +8,8 @@ describe('tvGuide.guide module', function() {
 
   	var $scope, channels, guideCtrl;
 
-    beforeEach(inject(function($controller) {
-      $scope = {};
+    beforeEach(inject(function($rootScope, $controller) {
+      $scope = $rootScope.$new();
       channels = {};
       guideCtrl = $controller('GuideController', {$scope : $scope, channels:channels});
     }));

@@ -1,20 +1,25 @@
 
-<a href="#/today">Today</a> <a href="#/tomorrow">Tomorrow</a>
 
-<table>
-    <thead>
-        <tr>
-            <th>Channel Name</th>
-            <th>Event Name</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="channel in guideCtrl.channels">
-            <td>{{channel.channelName}}</td>
-            <td ng-repeat="event in channel.events">
-                {{event.show.name}} <br />
-                {{event.name}}
-            </td>
-        </tr>
-    </tbody>
-</table>
+<form novalidate>
+    Date: <input type="date" ng-model="guideCtrl.date" required ng-change="guideCtrl.getChannels(guideCtrl.date)"/>
+    
+</form>
+
+ <h2 ng-if="guideCtrl.noData">No schedule found for {{guideCtrl.scheduleDate | date:'MM/dd/yyyy'}}</h2>
+
+<div ng-if="!guideCtrl.noData">
+    <h2>Schedule for {{guideCtrl.scheduleDate | date:'MM/dd/yyyy'}}</h2>
+
+    <table>
+        <tbody>
+            <tr ng-repeat="channel in guideCtrl.channels">
+                <td class="channel">
+                    {{channel.channelName}}
+                </td>
+                <td class="event" ng-repeat="event in channel.events">
+                    {{event | program}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

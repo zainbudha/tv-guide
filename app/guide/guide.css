@@ -1,0 +1,13 @@
+.channel  {
+	width: 30px;
+	height: 10px;
+  	padding: 10px;
+  	border: solid 2px blue;
+}
+
+.event  {
+	width: 50px;
+	height: 10px;
+  	padding: 5px;
+  	border: solid 1px black;
+}
