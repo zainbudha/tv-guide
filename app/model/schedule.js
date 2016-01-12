@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tvGuide.schedule', [])
+angular.module('tvGuide.model', [])
 
 .factory("schedule",
 function() {

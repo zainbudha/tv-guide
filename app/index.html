@@ -13,16 +13,27 @@
   <link rel="stylesheet" href="guide/guide.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body>
-  
-  <div ng-view></div>
+<body ng-controller='MainController as main'>
+    
+  <div id="tabs">
+    <ul class="tabs">
+      <li class="tabs"><a href="" ng-click="main.loadGuide()">Guide</a></li>
+      <li class="tabs"><a href="" ng-click="main.loadSearch()">Search</a></li>
+    </ul>
+  </div>
+
+  <div class="view" ng-view></div>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
-  <script src="components/comm/request.js"></script>
+  <script src="MainController.js"></script>
   <script src="model/schedule.js"></script>
+  <script src="model/request.js"></script>
   <script src="guide/guide.js"></script>
+  <script src="guide/GuideController.js"></script>
   <script src="guide/guideEvent.js"></script>
+  <script src="search/search.js"></script>
+  <script src="search/SearchController.js"></script>
 </body>
 </html>

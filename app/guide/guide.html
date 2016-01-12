@@ -1,8 +1,8 @@
 
 
-<form novalidate>
-    Date: <input type="date" ng-model="guideCtrl.date" required ng-change="guideCtrl.getChannels(guideCtrl.date)"/>
-    
+<form ng-submit="guideCtrl.getChannels(guideCtrl.date)" novalidate>
+    Date: <input type="date" ng-model="guideCtrl.date" required/>
+    <input type="submit" value="Get Schedule" />
 </form>
 
  <h2 ng-if="guideCtrl.noData">No schedule found for {{guideCtrl.scheduleDate | date:'MM/dd/yyyy'}}</h2>

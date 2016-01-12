@@ -1,0 +1,17 @@
+
+<h3>{{searchCtrl.title}}</h3>
+
+<form novalidate>
+	<input type="text" ng-model="searchCtrl.searchString" ng-change="searchCtrl.search(searchCtrl.searchString)" />
+</form>
+
+<ul>
+	<li ng-repeat="result in searchCtrl.shows">
+		<div ng-click="searchCtrl.getEpisodes(result.show.id)">{{result.show.name}}</div>
+	</li>
+</ul>
+
+
+<ul>
+	<li ng-repeat="episode in searchCtrl.episodes">{{episode.name}} Season {{episode.season}} Episode {{episode.number}}</li>
+</ul>

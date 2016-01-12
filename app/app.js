@@ -3,9 +3,13 @@
 // Declare app level module which depends on views, and components
 angular.module('tvGuide', [
   'ngRoute',
-  'tvGuide.guide'
+  'tvGuide.guide',
+  'tvGuide.search'
 ])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/guide'});
+  $routeProvider
+  .when('/',{
+  	redirectTo: '/guide'
+  });
 }])
