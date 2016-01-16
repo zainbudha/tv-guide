@@ -1,23 +1,25 @@
 angular.module('tvGuide.search')
-.controller('SearchController', ['req',
-	function(req){
+.controller('SearchController', ['req', '$location',
+	function(req, $location){
 		var searchCtrl = this;
 
 		searchCtrl.title = "Search for a TV show";
 		searchCtrl.searchString = "";
 		
 		searchCtrl.search = function search(searchStr) {
-			req.searchShow(searchStr)
-        		.then(function displayShowDetails(data) {
-        			searchCtrl.shows = data;
-        		})
+			searchCtrl.episodes = [];
+			if(searchStr) {
+				req.searchShow(searchStr)
+	        		.then(function displayShowDetails(data) {
+	        			searchCtrl.shows = data;
+	        		})
+        	}
+        	else {
+        		searchCtrl.shows = [];
+        	}
 		}
 
-		searchCtrl.getEpisodes = function getEpisodes(id) {
-			req.getEpisodes(id)
-				.then(function setEpisodes(data) {
-					searchCtrl.episodes = data;
-				})
+		searchCtrl.gotoEpisodeList = function episodeList(result) {
+			$location.path('/episodeList/' + result.show.name + '/' + result.show.id);
 		}
-		
 	}])

@@ -18,8 +18,8 @@ function() {
             channelName = data[i].show.network.name;
 
             if(!(channelName in channels))
-              channels[channelName] = {channelName: channelName, events: []};
-            channels[channelName].events.push(data[i])
+              channels[channelName] = {channelName: channelName, programs: []};
+            channels[channelName].programs.push(data[i])
           }
         }
 

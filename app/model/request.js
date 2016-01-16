@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module("tvGuide.model")
-.factory("req",['$http','schedule',
-  function($http, schedule) {
+.factory("req",['$http', 'schedule', 'dateFilter',
+  function($http, schedule, dateFilter) {
 
     var getDaySchedule = function getSchedule(date) {
       var url = "http://api.tvmaze.com/schedule";
       if(date) {
-          url = url + "?date=" + date;
+          url = url + "?date=" + dateFilter(date, 'yyyy-MM-dd');
       }
        
       return $http.get(url)

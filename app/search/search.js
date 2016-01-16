@@ -1,4 +1,4 @@
-angular.module('tvGuide.search', ['ngRoute', 'tvGuide.model'])
+angular.module('tvGuide.search', ['ngRoute', 'tvGuide.model','tvGuide.episodes'])
 .config(['$routeProvider',
 	function($routeProvider) {
 		$routeProvider

@@ -1,0 +1,16 @@
+
+<div>
+	<div class="left-div" ng-click='guideProgram.showEpisodes()'>
+		<img ng-src='{{guideProgram.program.show.image.medium}}' title='{{guideProgram.program.show.name}}' />
+	</div>
+	<div class="right-div">
+		{{guideProgram.program.airtime}}</br>
+		{{guideProgram.program.show.name}}</br>
+		{{guideProgram.program.name}} </br>
+		Duration {{program.runtime}}mins</br>
+		<div ng-if='guideProgram.selected'>
+			<guide-episodes guide-show='guideProgram.program.show'></guide-episodes>
+		</div>
+		<a href="" ng-click="guideProgram.gotoEpisodeList(guideProgram.program.show)">Episode list view</div>
+	</div>
+</div>

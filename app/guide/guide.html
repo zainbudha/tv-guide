@@ -1,5 +1,3 @@
-
-
 <form ng-submit="guideCtrl.getChannels(guideCtrl.date)" novalidate>
     Date: <input type="date" ng-model="guideCtrl.date" required/>
     <input type="submit" value="Get Schedule" />
@@ -9,15 +7,14 @@
 
 <div ng-if="!guideCtrl.noData">
     <h2>Schedule for {{guideCtrl.scheduleDate | date:'MM/dd/yyyy'}}</h2>
-
     <table>
         <tbody>
             <tr ng-repeat="channel in guideCtrl.channels">
                 <td class="channel">
                     {{channel.channelName}}
                 </td>
-                <td class="event" ng-repeat="event in channel.events">
-                    {{event | program}}
+                <td class="prog" ng-repeat="program in channel.programs">
+                    <guide-program program='program'/>
                 </td>
             </tr>
         </tbody>

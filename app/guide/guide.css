@@ -1,13 +1,20 @@
 .channel  {
-	width: 30px;
-	height: 10px;
-  	padding: 10px;
+	padding: 10px;
   	border: solid 2px blue;
 }
 
-.event  {
-	width: 50px;
-	height: 10px;
-  	padding: 5px;
+.prog  {
+	padding: 5px;
+	width:400px;
   	border: solid 1px black;
+}
+
+.left-div {
+    float: left;
+    width: 200px;
+    margin-right: 8px;
+}
+.right-div {
+	width: 200px;
+    margin-left: 218px;
 }

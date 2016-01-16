@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tvGuide.guide', ['ngRoute', 'tvGuide.model'])
+angular.module('tvGuide.guide', ['ngRoute', 'tvGuide.model', 'tvGuide.episodes'])
 .config(['$routeProvider', 
   function($routeProvider) {
     $routeProvider

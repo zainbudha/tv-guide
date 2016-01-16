@@ -1,17 +1,19 @@
 
-<h3>{{searchCtrl.title}}</h3>
+<h3>{{::searchCtrl.title}}</h3>
 
 <form novalidate>
-	<input type="text" ng-model="searchCtrl.searchString" ng-change="searchCtrl.search(searchCtrl.searchString)" />
+	<input type="text" ng-model="searchCtrl.searchString" ng-change="searchCtrl.search(searchCtrl.searchString)" 
+	ng-model-options="{ updateOn: 'default blur', debounce: 300 }" />
 </form>
 
 <ul>
 	<li ng-repeat="result in searchCtrl.shows">
-		<div ng-click="searchCtrl.getEpisodes(result.show.id)">{{result.show.name}}</div>
+		<div ng-click="result.selected = !result.selected">{{result.show.name}}</div>
+		<div ng-if='result.selected'>
+			<guide-episodes guide-show='result.show'></guide-episodes>
+		</div>
+		<a href="" ng-click="searchCtrl.gotoEpisodeList(result)">Episode list view</div>
 	</li>
 </ul>
 
 
-<ul>
-	<li ng-repeat="episode in searchCtrl.episodes">{{episode.name}} Season {{episode.season}} Episode {{episode.number}}</li>
-</ul>
