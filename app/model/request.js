@@ -1,37 +1,43 @@
 'use strict';
 
 angular.module("tvGuide.model")
-.factory("req",['$http', 'schedule', 'dateFilter',
-  function($http, schedule, dateFilter) {
+.factory("req",['$http', '$q', 'schedule', 'dateFilter',
+  function($http, $q, schedule, dateFilter) {
+
+    var httpPromise = function httpPromise(url, processData) {
+      var deferred = $q.defer();
+      $http.get(url)
+        .success(function(data) {
+          if(processData) {
+            data = schedule.process(data)
+          }
+          deferred.resolve(data);
+        })
+        .error(function() {
+          deferred.reject();
+        })
+      return deferred.promise;
+    }
 
     var getDaySchedule = function getSchedule(date) {
       var url = "http://api.tvmaze.com/schedule";
       if(date) {
           url = url + "?date=" + dateFilter(date, 'yyyy-MM-dd');
       }
-       
-      return $http.get(url)
-        .then(function(response) {
-          return schedule.process(response.data);
-        });
+
+      return httpPromise(url, true);
     }
 
     var searchShow = function searchShow(searchString) {
-      var url = "http://api.tvmaze.com/search/shows?q=" + searchString;
-             
-      return $http.get(url)
-        .then(function(response) {
-          return response.data;
-        });
+      var baseUrl = "http://api.tvmaze.com/search/shows?q=";
+      
+      return httpPromise(baseUrl + encodeURIComponent(searchString));
     }
 
     var getEpisodes = function getEpisodes(id) {
       var url = "http://api.tvmaze.com/shows/" + id + "/episodes";
-             
-      return $http.get(url)
-        .then(function(response) {
-          return response.data;
-        });
+      
+      return httpPromise(url);
     }
     
     var publicAPI = {
