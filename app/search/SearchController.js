@@ -8,11 +8,9 @@ angular.module('tvGuide.search')
 		
 		searchCtrl.search = function search(searchStr) {
 			searchCtrl.episodes = [];
+
 			if(searchStr) {
-				req.searchShow(searchStr)
-	        		.then(function displayShowDetails(data) {
-	        			searchCtrl.shows = data;
-	        		})
+				searchCtrl.shows = req.searchShow(searchStr)
         	}
         	else {
         		searchCtrl.shows = [];

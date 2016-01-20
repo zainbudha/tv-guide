@@ -1,4 +1,4 @@
-angular.module('tvGuide.episodes', ['tvGuide.model'])
+angular.module('tvGuide.episodes', ['tvGuide.model', 'ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
 	$routeProvider
 	.when('/episodeList/:showName/:showId', {
@@ -27,8 +27,6 @@ angular.module('tvGuide.episodes', ['tvGuide.model'])
 }])
 .controller('EpisodeController', ['$scope', '$routeParams', 'req', 
 	function($scope, $routeParams, req) {
-		var episodeCtrl = this;
-
 		req.getEpisodes($routeParams.showId)
 		.then(function setEpisodes(data) {
 			$scope.episodes = data;

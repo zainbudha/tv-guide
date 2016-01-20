@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module("tvGuide.model")
-.factory("req",['$http', '$q', 'schedule', 'dateFilter',
-  function($http, $q, schedule, dateFilter) {
+.factory("req", ['$http', '$q', '$resource', 'schedule', 'dateFilter',
+  function($http, $q, $resource, schedule, dateFilter) {
 
     var httpPromise = function httpPromise(url, processData) {
       var deferred = $q.defer();
@@ -28,10 +28,12 @@ angular.module("tvGuide.model")
       return httpPromise(url, true);
     }
 
+    var Search = $resource('http://api.tvmaze.com/search/shows?q=:search', null, {
+      query : {method: 'get', isArray: true, cancellable: true}
+    });
+
     var searchShow = function searchShow(searchString) {
-      var baseUrl = "http://api.tvmaze.com/search/shows?q=";
-      
-      return httpPromise(baseUrl + encodeURIComponent(searchString));
+      return Search.query({search:searchString});
     }
 
     var getEpisodes = function getEpisodes(id) {

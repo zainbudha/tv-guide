@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tvGuide.model', [])
+angular.module('tvGuide.model', ['ngResource'])
 
 .factory("schedule",
 function() {
