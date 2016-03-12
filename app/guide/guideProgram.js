@@ -6,11 +6,11 @@ angular.module('tvGuide.guide')
     scope : {
       program : '='
     },
-    controller: ['$scope', '$location', function($scope, $location) {
+    bindToController: true,
+    controller: ['$location', function($location) {
       var guideProgram = this;
       guideProgram.selected = false;
-      guideProgram.program = $scope.program;
-
+      
       guideProgram.showEpisodes = function show() {
         guideProgram.selected = !guideProgram.selected;
       }

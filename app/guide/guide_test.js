@@ -31,6 +31,7 @@ describe('tvGuide.guide module', function() {
   		$this = $controller("GuideController", { req: req });
   		$rootScope.$apply();
   		expect($this.channels).toBe("a");
+  		console.log($rootScope.$countWatchers());
   	})
 
   });
