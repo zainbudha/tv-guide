@@ -4,31 +4,30 @@ angular.module('tvGuide.model', ['ngResource'])
 
 .factory("schedule",
 function() {
-    var schedule = this;
 
-    var process = function buildChannels(data) {
-        
-        var channels = {};
+  function buildChannels(data) {
+      
+      var channels = {};
 
-        if(data) {
-          var length = data.length;
-          var j = 0;
-          var channelName;
-          for (var i = 0; i < length; i++) {
-            channelName = data[i].show.network.name;
+      if(data) {
+        var length = data.length;
+        var j = 0;
+        var channelName;
+        for (var i = 0; i < length; i++) {
+          channelName = data[i].show.network.name;
 
-            if(!(channelName in channels))
-              channels[channelName] = {channelName: channelName, programs: []};
-            channels[channelName].programs.push(data[i])
-          }
+          if(!(channelName in channels))
+            channels[channelName] = {channelName: channelName, programs: []};
+          channels[channelName].programs.push(data[i])
         }
+      }
 
-        return channels;
-    }
+      return channels;
+  }
 
-    var publicAPI = {
-      process: process
+  var publicAPI = {
+      process: buildChannels
     }
-    
-    return publicAPI;
+  
+  return publicAPI;
 });

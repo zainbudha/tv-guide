@@ -3,10 +3,10 @@ angular.module('tvGuide.guide')
 function(req) {
     var guide = this;
 
-    guide.getChannels = function getChannels(date) {
-      req.getDaySchedule(date)
+    guide.getChannels = function getChannels() {
+      req.getDaySchedule(guide.date)
         .then(function setChannels(schedule) {
-          guide.scheduleDate = date;
+          guide.scheduleDate = guide.date;
           guide.channels = schedule;
           
           if(Object.keys(schedule).length === 0) {
@@ -18,18 +18,10 @@ function(req) {
         });
     }
 
-    // var addHours = function(date, h) {    
-    //   return new Date(date.getTime() + (h*60*60*1000)); 
-    // }
-
+  
     guide.date = new Date();
     guide.noData = false;
     guide.getChannels(guide.date);
 
-    // guide.dates = [guide.date];
-
-    // for (var i = 1; i < 7; i++) {
-    //   guide.dates[i] = addHours(guide.date,i)
-    // };
-    // console.log(guide.dates);
+  
 }]);

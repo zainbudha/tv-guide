@@ -9,11 +9,6 @@ angular.module('tvGuide.guide')
     bindToController: true,
     controller: ['$location', function($location) {
       var guideProgram = this;
-      guideProgram.selected = false;
-      
-      guideProgram.showEpisodes = function show() {
-        guideProgram.selected = !guideProgram.selected;
-      }
       
       guideProgram.gotoEpisodeList = function episodeList(guideShow) {
         $location.path('/episodeList/' + guideShow.name + '/' + guideShow.id);

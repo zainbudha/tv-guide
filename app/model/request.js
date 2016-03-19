@@ -4,7 +4,13 @@ angular.module("tvGuide.model")
 .factory("req", ['$http', '$q', '$resource', 'schedule', 'dateFilter',
   function($http, $q, $resource, schedule, dateFilter) {
 
-    var httpPromise = function httpPromise(url, processData) {
+    var publicAPI = {
+      getDaySchedule: getDaySchedule,
+      searchShow : searchShow,
+      getEpisodes : getEpisodes
+    }
+
+    function httpPromise(url, processData) {
       var deferred = $q.defer();
       $http.get(url)
         .success(function(data) {
@@ -19,7 +25,7 @@ angular.module("tvGuide.model")
       return deferred.promise;
     }
 
-    var getDaySchedule = function getSchedule(date) {
+    function getDaySchedule(date) {
       var url = "http://api.tvmaze.com/schedule";
       if(date) {
           url = url + "?date=" + dateFilter(date, 'yyyy-MM-dd');
@@ -32,20 +38,14 @@ angular.module("tvGuide.model")
       query : {method: 'get', isArray: true, cancellable: true}
     });
 
-    var searchShow = function searchShow(searchString) {
+    function searchShow(searchString) {
       return Search.query({search:searchString});
     }
 
-    var getEpisodes = function getEpisodes(id) {
+    function getEpisodes(id) {
       var url = "http://api.tvmaze.com/shows/" + id + "/episodes";
       
       return httpPromise(url);
-    }
-    
-    var publicAPI = {
-      getDaySchedule: getDaySchedule,
-      searchShow : searchShow,
-      getEpisodes : getEpisodes
     }
     
     return publicAPI;

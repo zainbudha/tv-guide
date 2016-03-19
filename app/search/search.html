@@ -2,16 +2,13 @@
 <h3>{{::searchCtrl.title}}</h3>
 
 <form novalidate>
-	<input type="text" ng-model="searchCtrl.searchString" ng-change="searchCtrl.search(searchCtrl.searchString)" 
+	<input type="text" ng-model="searchCtrl.searchString" ng-change="searchCtrl.search()" 
 	ng-model-options="{updateOn:'default blur', debounce: 300}" />
 </form>
 
 <ul>
 	<li ng-repeat="result in searchCtrl.shows">
-		<div ng-click="result.selected = !result.selected">{{result.show.name}}</div>
-		<div ng-if='result.selected'>
-			<guide-episodes guide-show='result.show'></guide-episodes>
-		</div>
+		<div>{{result.show.name}}</div>
 		<a href="" ng-click="searchCtrl.gotoEpisodeList(result)">Episode list view</div>
 	</li>
 </ul>

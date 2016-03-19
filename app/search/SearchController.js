@@ -6,11 +6,11 @@ angular.module('tvGuide.search')
 		searchCtrl.title = "Search for a TV show";
 		searchCtrl.searchString = "";
 		
-		searchCtrl.search = function search(searchStr) {
+		searchCtrl.search = function search() {
 			searchCtrl.episodes = [];
 
-			if(searchStr) {
-				searchCtrl.shows = req.searchShow(searchStr)
+			if(searchCtrl.searchString) {
+				searchCtrl.shows = req.searchShow(searchCtrl.searchString);
         	}
         	else {
         		searchCtrl.shows = [];

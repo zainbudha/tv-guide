@@ -14,6 +14,7 @@ module.exports = function(config){
       'app/guide/**/*.js',
       'app/search/search.js',
       'app/search/**/*.js',
+      'app/episodes/episodes.js',
       'app/episodes/**/*.js'
     ],
 

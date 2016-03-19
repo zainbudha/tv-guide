@@ -2,8 +2,10 @@
 
 describe('tvGuide.guide module', function() {
 
-  beforeEach(angular.mock.module('tvGuide.model'));
-  beforeEach(angular.mock.module('tvGuide.guide'));
+  beforeEach(function(){
+  	angular.mock.module('tvGuide.model');
+  	angular.mock.module('tvGuide.guide');
+  });
 
   describe('guide controller', function(){
 
